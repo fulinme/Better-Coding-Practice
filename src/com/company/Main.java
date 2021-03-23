@@ -13,25 +13,18 @@ public class Main {
     private static final String txtCSV = "./";
 
     public static void main(String[] args) throws IOException {
-
-        final Path path = Paths.get(txtCSV + args[0]);
-        final List<String> lines = Files.readAllLines(path);
         double total = 0d;
         double totalInJaunary = 0;
+        List<InfoDataModel> data = CSVParser.CSVParse(txtCSV + args[0]);
 
-        final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        for (InfoDataModel dateItem : data) {
+            total += dateItem.spend;
 
-        for(final String line: lines) {
-            final String[] columns = line.split(",");
-            final double amount = Double.parseDouble(columns[1]);
-            total += amount;
-
-            final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
-            if (date.getMonth() == Month.JANUARY) {
-                final double amountInJanuary = Double.parseDouble(columns[1]);
-                totalInJaunary += amountInJanuary;
+            if (dateItem.date.getMonth() == Month.JANUARY) {
+                totalInJaunary += dateItem.spend;
             }
         }
+
         System.out.println("total transations is:" + total);
         System.out.println("total transations is January:" + totalInJaunary);
 
