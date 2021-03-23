@@ -18,30 +18,16 @@ public class Main {
 
         List<InfoDataModel> data = new CSVParser().CSVParse(txtCSV + args[0]);
 
-        System.out.println("total transations is:" + calcaulateTotalAmount(data));
+        StatementProcessor dataProcess = new StatementProcessor(data);
 
-        double totalInJaunary = calcaulateTotalAmount(selectInMonth(data, Month.JANUARY));
+        System.out.println("total transations is:" + dataProcess.calcaulateTotalAmount());
+
+        double totalInJaunary = (new StatementProcessor(dataProcess.selectInMonth(Month.JANUARY))).calcaulateTotalAmount();
         System.out.println("total transations is January:" + totalInJaunary);
 
     }
 
-    public static double calcaulateTotalAmount(final List<InfoDataModel> data) {
-        double total = 0d;
-        for (InfoDataModel dateItem : data) {
-            total += dateItem.getAmount();
-        }
-        return total;
-    }
 
-    public static  List<InfoDataModel> selectInMonth(final List<InfoDataModel> data, final Month month) {
-        final List<InfoDataModel> dataInMonth = new ArrayList<>();
-        for(final InfoDataModel infoDataModel: data) {
-            if (infoDataModel.getDate().getMonth() == month) {
-                dataInMonth.add(infoDataModel);
-            }
-        }
-        return dataInMonth;
-    }
 
 
 }
