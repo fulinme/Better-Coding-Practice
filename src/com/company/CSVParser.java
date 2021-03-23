@@ -9,22 +9,22 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVParser {
+public class CSVParser implements StatementParser {
     private final static DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-     public List<InfoDataModel> CSVParse(String file) throws IOException {
+     public List<InfoDataModel> Parse(String file) throws IOException {
         List<InfoDataModel> result = new ArrayList<>();
 
         final Path path = Paths.get(file);
         final List<String> lines = Files.readAllLines(path);
 
         for (final String line : lines) {
-            result.add(CSVparseLine(line));
+            result.add(ParseLine(line));
         }
         return result;
     }
 
-    private InfoDataModel CSVparseLine(final String line) {
+    public InfoDataModel ParseLine(final String line) {
 
         final String[] columns = line.split(",");
         final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);

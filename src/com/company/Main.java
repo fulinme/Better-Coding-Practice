@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        List<InfoDataModel> data = new CSVParser().CSVParse(txtCSV + args[0]);
+        List<InfoDataModel> data = new DataAnalyzer().analyze(txtCSV + args[0], new CSVParser());
 
         StatementProcessor dataProcess = new StatementProcessor(data);
 
@@ -26,6 +26,9 @@ public class Main {
         System.out.println("total transations is January:" + totalInJaunary);
 
     }
+
+
+
 
 
 
