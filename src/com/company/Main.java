@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         double total = 0d;
         double totalInJaunary = 0;
-        List<InfoDataModel> data = CSVParser.CSVParse(txtCSV + args[0]);
+        List<InfoDataModel> data = new CSVParser().CSVParse(txtCSV + args[0]);
 
         for (InfoDataModel dateItem : data) {
             total += dateItem.spend;
