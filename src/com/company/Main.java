@@ -18,10 +18,10 @@ public class Main {
         List<InfoDataModel> data = new CSVParser().CSVParse(txtCSV + args[0]);
 
         for (InfoDataModel dateItem : data) {
-            total += dateItem.spend;
+            total += dateItem.getAmount();
 
-            if (dateItem.date.getMonth() == Month.JANUARY) {
-                totalInJaunary += dateItem.spend;
+            if (dateItem.getDate().getMonth() == Month.JANUARY) {
+                totalInJaunary += dateItem.getAmount();
             }
         }
 
