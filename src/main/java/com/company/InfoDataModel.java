@@ -7,7 +7,7 @@ public class InfoDataModel {
     private final Double amount;
     private final String company;
 
-    InfoDataModel(LocalDate date, Double amount, String company) {
+    public InfoDataModel(LocalDate date, Double amount, String company) {
         this.date = date;
         this.amount = amount;
         this.company = company;
