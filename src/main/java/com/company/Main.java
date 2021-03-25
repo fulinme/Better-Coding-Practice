@@ -1,22 +1,16 @@
 package com.company;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static final String txtCSV = "./";
+
 
     public static void main(String[] args) throws IOException {
 
 
-        List<InfoDataModel> data = new DataAnalyzer().analyze(txtCSV + args[0], new CSVParser());
+        List<InfoDataModel> data = new DataAnalyzer().analyze(args[0], new CSVParser());
 
         StatementProcessor dataProcess = new StatementProcessor(data);
 

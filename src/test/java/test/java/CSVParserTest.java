@@ -3,7 +3,6 @@ package test.java;
 
 import com.company.CSVParser;
 import com.company.InfoDataModel;
-import com.sun.tools.jdeprscan.CSV;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
